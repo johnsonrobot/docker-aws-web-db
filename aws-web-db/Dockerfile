@@ -11,10 +11,5 @@ RUN tar xvfz app.tgz
 
 RUN chown apache:root /var/www/html/rds.conf.php
 
-#Restart web server
-#amazon-linux-httpd [enable | disable]
-RUN echo "apachctl restart" >> /root/run_webserver.sh && \
-    echo "apachctl restart" >> /root/run_webserver.sh && \
-    chmod 755 /root/run_webserver.sh
-
-CMD /root/run_webserver.sh
+#web server
+CMD apachctl -D FOREGROUND
